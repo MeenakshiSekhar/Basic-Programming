@@ -1,0 +1,90 @@
+/* Source: geeksforgeeks
+Write a program to sort an array of 0's,1's and 2's in ascending order.
+
+Input:
+The first line contains an integer 'T' denoting the total number of test cases. In each test cases, First line is number of elements in array 'N' and second its values.
+
+Output: 
+Print the sorted array of 0's, 1's and 2's.
+
+Constraints: 
+
+1 <= T <= 100
+1 <= N <= 100
+0 <= arr[i] <= 2
+
+Example:
+
+Input :
+
+2
+5
+0 2 1 2 0
+3
+0 1 0
+ 
+
+Output:
+
+0 0 1 2 2
+0 0 1
+
+*/
+
+#include<iostream>
+
+using namespace std;
+
+void swap(int *a, int *b)
+{
+	int temp=*a;
+	*a=*b;
+	*b=temp;
+}
+
+int main()
+{
+	int t,n;
+	cin>>t;
+	int index0=-1, index1=-1, index2=-1, lastindex;
+	for(int t_i=0;t_i<t;t_i++)
+	{
+		cin>>n;
+		int a[n];
+		//lastindex=n_i;
+		//cout<<endl;
+		for(int n_i=0;n_i<n;n_i++)
+		{
+			cin>>a[n_i];
+			if(a[n_i]==0 && index0==-1)
+			{
+			    index0=n_i;
+			}
+			else if(a[n_i]==1 && index1==-1)
+			{
+			    index1=n_i;
+			}
+			else if(a[n_i]==2 && index2==-1)
+			{
+			    index2=n_i;
+			}
+			if(n_i>0)
+			{
+				    if(a[n_i]==0 && index1!=-1)
+				    {
+				        swap(&a[n_i], &a[index1]);
+				        index1=n_i;
+				    }
+				    else if(a[n_i]==1 && index2!=-1)
+				    {
+				        swap(&a[n_i], &a[index2]);
+				        index2=n_i;
+				    }
+			}
+		}
+		for(int n_i=0;n_i<n; n_i++)
+			cout<<a[n_i]<<" ";
+		cout<<endl;
+	}
+	
+}
