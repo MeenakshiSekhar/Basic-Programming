@@ -88,3 +88,7 @@ int main()
 	}
 	
 }
+
+
+//Comments: Your output is producing less number of lines than expected!!!
+//Maybe you are missing new line character
