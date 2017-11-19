@@ -1,0 +1,72 @@
+/*
+Source: geeksforgeeks
+
+Given a String of length N reverse the words in it. Words are separated by dots.
+
+Input:
+The first line contains T denoting the number of testcases. Then follows description of testcases. Each case contains a string containing spaces and characters.
+ 
+
+Output:
+For each test case, output a single line containing the reversed String.
+
+Constraints:
+1<=T<=20
+1<=Lenght of String<=2000
+
+
+Example:
+Input:
+2
+i.like.this.program.very.much
+pqr.mno
+
+Output:
+much.very.program.this.like.i
+mno.pqr*/
+
+#include<iostream>
+#include<string.h>
+
+using namespace std;
+
+int main()
+{
+	char string[2000];
+	int count=0;
+	int t,k=1;
+	cin>>t;
+	for(int t_i=0;t_i<t;t_i++)
+	{
+		int traverse_i;
+		cin>>string;
+		int len=strlen(string);
+		for(traverse_i=len-1;traverse_i>=0;traverse_i--)
+		{
+			if(string[traverse_i]=='.')
+			{
+				for(int print_i=1;print_i<=count;print_i++)
+				{
+					k=0;
+					cout<<string[traverse_i+print_i];
+				}
+				cout<<'.';
+				count=0;
+				traverse_i--;
+			}
+			count++;
+			if(!traverse_i)
+			{
+				while(string[traverse_i]!='.')
+					cout<<string[traverse_i++];
+				break;
+			}
+		}
+		
+		cout<<'\0'<<endl;
+	}
+}
+
+//This code is not entirely correct in that it accesses illegal memory that print special characters, which are not visible on screen.
+// Needs to be modified
+
