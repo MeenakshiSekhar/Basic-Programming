@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+void print(int *arr, int size)
+{
+	for(int arr_i=0; arr_i<size; arr_i++)
+	{
+		cout<<arr[arr_i]<<"\t";
+	}
+}
+
+void reverse(int *arr, int first, int last)
+{
+	int temp;
+	while(first<last)
+	{
+		temp=arr[first];
+		arr[first]=arr[last];
+		arr[last]=temp;
+		first++;
+		last--;
+	}
+}
+
+void rotate(int *arr, int size, int diff)
+{
+	reverse(arr,0,diff-1);
+	reverse(arr,diff,size-1);
+	reverse(arr,0,size-1);
+}
+
+int main() {
+	// your code goes here
+	int arr[]={1,2,3,4,5,6,7,8,9};
+	int size=sizeof(arr)/sizeof(int);
+	rotate(arr,size,3);
+	print(arr,size);
+	return 0;
+}
