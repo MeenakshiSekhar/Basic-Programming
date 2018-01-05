@@ -1,0 +1,45 @@
+#include <iostream>
+#include<algorithm>
+
+using namespace std;
+
+int search(int *arr, int begin, int end , int data)
+{
+    for(int arr_i=begin+1; arr_i<end; arr_i++)
+    {
+        if(arr[arr_i]==data)
+        return data;
+        if(arr[arr_i]>data)
+        return -1;
+    }
+    return -1;
+}
+
+int main() {
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    int n,p;
+	    cin>>n>>p;
+	    int arr[n];
+	    int flag=0;
+	    for(int arr_i=0; arr_i<n; arr_i++)
+	        cin>>arr[arr_i];
+	    sort(arr, arr+n);
+	    for(int arr_i=0; arr[arr_i]<=p && arr_i<n; arr_i++)
+	    {
+	        if(arr[arr_i]!=0 && p%arr[arr_i]==0)
+	        {
+	           int pair = search(arr,arr_i, n, p/arr[arr_i]);
+	           if(pair!=-1)
+	           {
+	                flag=1;
+	                break;
+	           }
+	        }
+	    }
+	    flag==0? cout<<"No"<<endl :cout<<"Yes"<<endl;
+	}
+	return 0;
+}
