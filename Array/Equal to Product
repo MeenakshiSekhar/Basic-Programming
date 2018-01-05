@@ -1,3 +1,5 @@
+/*
+//Method 1: Sort & search
 #include <iostream>
 #include<algorithm>
 
@@ -42,4 +44,54 @@ int main() {
 	    flag==0? cout<<"No"<<endl :cout<<"Yes"<<endl;
 	}
 	return 0;
+}
+
+*/
+
+//Method 2: By hashing , more efficient
+
+#include<iostream>
+#include<unordered_set>
+
+using namespace std;
+
+bool checkProduct(int *arr, int n, int data)
+{
+	if(n<2)
+	return false;
+	
+	unordered_set<int> s;
+	
+	for(int arr_i=0; arr_i<n; arr_i++)
+	{
+		if(arr[arr_i]==0)
+		{
+			if(data==0)
+				return true;
+		}
+		else if(data%arr[arr_i]==0)
+		{
+			if(s.find(data/arr[arr_i]) != s.end())
+			return true;
+			
+			s.insert(arr[arr_i]);
+		}
+		
+	}
+	return false;
+}
+
+int main()
+{
+	int t;
+	cin>>t;
+	while(t--)
+	{
+		int n, p;
+		cin>>n>>p;
+		int arr[n];
+		for(int arr_i=0; arr_i<n; arr_i++)
+			cin>>arr[arr_i];
+		checkProduct(arr, n, p)==true? cout<<"Yes"<<endl:cout<<"No"<<endl;
+	}
 }
