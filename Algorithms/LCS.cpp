@@ -6,10 +6,10 @@ using namespace std;
 
 string lcs(string text, int textSize, string pattern, int patternSize)
 {
-  int dp[patternSize][textSize];
-  for(int i=0; i<patternSize; i++)
+  int dp[patternSize+1][textSize+1];
+  for(int i=0; i<=patternSize; i++)
   {
-    for(int j=0; j<textSize; j++)
+    for(int j=0; j<=textSize; j++)
     {
       if(i==0 || j==0)
       {
