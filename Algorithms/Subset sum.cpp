@@ -16,7 +16,7 @@
           }
           else
           {
-            if(set[i-1]<sum)
+            if(set[i-1]<j)
               dp[i][j]=dp[i-1][j];
             else
             {
